@@ -2,7 +2,7 @@ const expect = require("chai").expect;
 const purge = require('../../../../../src/api/v1/orders/delete');
 const db = require('../../../../../src/shared/database');
 
-describe('#delete', () => {
+describe('#Orders#delete', () => {
   describe('when a valid request is made', () => {
     it('should return success', () => {
       Promise.resolve(db.insert({ id: '1'}, 'ordersTable'));

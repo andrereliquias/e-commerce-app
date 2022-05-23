@@ -2,7 +2,7 @@ const expect = require("chai").expect;
 const update = require('../../../../../src/api/v1/orders/update');
 const db = require('../../../../../src/shared/database');
 
-describe('#update', () => {
+describe('#Orders#update', () => {
   describe('when a valid request is made', () => {
     it('should return success', () => {
       Promise.resolve(db.insert({ id: '1'}, 'ordersTable'));

@@ -8,7 +8,7 @@ AWS.mock('DynamoDB.DocumentClient', 'scan', (params, callback) => {
   callback(null, [{ id: "1", item: "mock" }]);
 });
 
-describe('#read', () => {
+describe('#Orders#read', () => {
   describe('when a valid request is made', () => {
     it('should return success', () => {
       const event = {
@@ -27,7 +27,7 @@ describe('#read', () => {
 
 });
 
-describe('#readById', () => {
+describe('#Orders#readById', () => {
   describe('when a order is founded', () => {
     it('should return success with a 200 status code', () => {
 

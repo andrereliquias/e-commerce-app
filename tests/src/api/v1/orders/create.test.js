@@ -8,7 +8,7 @@ AWS.mock('DynamoDB.DocumentClient', 'put', (params, callback) => {
   callback(null, {});
 });
 
-describe('#create', () => {
+describe('#Orders#create', () => {
   describe('when a valid request is made', () => {
     it('should return success', () => {
       const event = {
