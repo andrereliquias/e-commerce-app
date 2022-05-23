@@ -15,7 +15,7 @@ describe('#delete', () => {
 
       purge.delete(event, {}, (err, resp) => {
         expect(err).to.be.null;
-        expect(resp.statusCode).to.equal(200);
+        expect(resp.statusCode).to.equal(204);
         expect(Object.keys(JSON.parse(resp.body)).length).to.equal(0)
       });
     });

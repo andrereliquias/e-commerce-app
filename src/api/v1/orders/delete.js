@@ -13,9 +13,8 @@ module.exports.delete = (event, context, callback) => {
     } else {
 
       dynamoClient.delete(event.pathParameters, 'ordersTable').then((success) => {
-        console.log(success)
 
-        response.json(callback, success, 200);
+        response.json(callback, success, 204);
       }).catch((erro) => {
         responseErro.erro(callback, event.path, erro.message);
       });
