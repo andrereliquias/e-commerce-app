@@ -22,15 +22,15 @@ describe('#erro', () => {
   });
 
   it('should return a response with a personalized message and status code', () => {
-    let responseErro = {recurso: '/teste/v1/orders/12', erro: 'Item não encontrado'};
+    let responseErro = {recurso: '/teste/v1/orders/12', erro: 'Erro ao conectar com o banco de dados'};
 
     error.erro( (error, response) => {
 
       expect(response).to.include.all.keys('statusCode', 'headers', 'body');
       expect(JSON.parse(response.body)).to.include(responseErro);
-      expect(response.statusCode).to.equal(404);
+      expect(response.statusCode).to.equal(500);
       expect(error).to.be.null;
 
-    }, '/teste/v1/orders/12', 'Item não encontrado', 404);
+    }, '/teste/v1/orders/12', 'Erro ao conectar com o banco de dados', 500);
   });
 });
