@@ -88,6 +88,15 @@ functions:
           method: put
           cors: true
 
+  deleteOrders:
+    handler: src/api/${self:custom.version}/orders/delete.delete
+    timeout: 30
+    events:
+      - http:
+          path: ${self:custom.version}/orders/{id}
+          method: delete
+          cors: true
+
 resources:
  Resources:
     ordersTable:
