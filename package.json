@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A customer's wish list application",
   "scripts": {
-    "test": "jest --passWithNoTests",
+    "test": "IS_TEST=true mocha 'tests/**/*.js' --recursive",
     "dev": "npm install; serverless offline start --stage local",
     "deploy-main": "serverless deploy --verbose",
     "deploy-development": "serverless deploy --verbose --stage dev"
@@ -20,8 +20,9 @@
   "homepage": "https://github.com/AndreReliquias/wishlist-app#readme",
   "devDependencies": {
     "aws-sdk": "^2.1065.0",
-    "jest": "^27.4.7",
+    "mocha": "^10.0.0",
     "serverless-dynamodb-local": "^0.2.40",
-    "serverless-offline": "^8.3.1"
+    "serverless-offline": "^8.3.1",
+    "aws-sdk-mock": "^5.7.0"
   }
 }
