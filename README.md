@@ -10,7 +10,7 @@ Para execução local é necessário as seguintes ferramentas:
 - [Docker](https://docs.docker.com/engine/install/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
-Uma vez instalado, basta seguir os seguintes passos:
+Uma vez instaladas, basta seguir os seguintes passos:
 - Clone o repositório 
   ```
   $ git clone git@github.com:AndreReliquias/e-commerce-app.git
@@ -29,10 +29,6 @@ O projeto conta com uma pipeline de CI/CD provida pelo [GitHub Actions](https://
 - Instale o [serverless framework](https://www.serverless.com/)
   ```
   $ npm install -g serverless
-  ```
-- Instale as dependências
-  ```
-  $ npm install
   ```
 - Instale as dependências
   ```
