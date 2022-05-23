@@ -61,6 +61,24 @@ functions:
           method: post
           cors: true
 
+  readOrders:
+    handler: src/api/${self:custom.version}/orders/read.read
+    timeout: 30
+    events:
+      - http:
+          path: ${self:custom.version}/orders
+          method: get
+          cors: true
+
+  readOrdersById:
+    handler: src/api/${self:custom.version}/orders/read.readById
+    timeout: 30
+    events:
+      - http:
+          path: ${self:custom.version}/orders/{id}
+          method: get
+          cors: true
+
 resources:
  Resources:
     ordersTable:

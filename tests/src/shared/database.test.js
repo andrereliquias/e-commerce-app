@@ -16,6 +16,10 @@ AWS.mock('DynamoDB.DocumentClient', 'query', (params, callback) => {
   callback(null, {Items: [{ id: "1", item: "mock" }]});
 });
 
+AWS.mock('DynamoDB.DocumentClient', 'scan', (params, callback) => {
+  callback(null, {Items: [{ id: "1", item: "mock" }]});
+});
+
 AWS.mock('DynamoDB.DocumentClient', 'update', (params, callback) => {
   callback(null, {Attributes: { id: "1", item: "updated" }});
 });
@@ -89,6 +93,24 @@ describe('#dynamodb', () => {
     //   expect(res).to.have.lengthOf(1);
     //   expect(Object.keys(res[0])).to.have.lengthOf(2);
     // });
+  });
+
+  describe('search()', () => {
+    it("should have search method", () => {
+      expect(database).to.be.an('object').and.include.all.keys('search');
+      expect(database.search).to.be.an('function');
+    });
+
+    it('should search a item', async () => {
+      let params = {
+        TableName: 'ordersTable'
+      }
+
+      let res = (await database.search(params)).Items;
+
+      expect(res).to.be.an('array');
+      expect(res).to.have.lengthOf.above(1);
+    });
   });
 
   describe('update()', () => {

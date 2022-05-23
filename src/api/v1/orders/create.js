@@ -28,7 +28,7 @@ module.exports.create = (event, context, callback) => {
   };
 
   dynamoClient.insert(item, 'ordersTable').then((success) => {
-    response.json(callback, item, 200);
+    response.json(callback, item, 201);
   }).catch((erro) => {
     responseErro.erro(callback, event.resource, erro.message);
   });

@@ -35,6 +35,9 @@ const client = {
   query: (params) => {
     return ddb.query(params).promise();
   },
+  search: (params) => {
+    return ddb.scan(params).promise();
+  },
   update: (params) => {
     return ddb.update(params).promise();
   },
