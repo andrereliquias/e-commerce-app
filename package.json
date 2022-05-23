@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A customer's wish list application",
   "scripts": {
-    "test": "IS_TEST=true mocha 'tests/**/*.js' --recursive",
+    "test": "IS_OFFLINE=true mocha 'tests/**/*.js' --recursive",
+    "test-pipeline": "IS_TEST=true mocha 'tests/**/*.js' --recursive",
     "dev": "serverless offline start --stage local",
     "deploy-main": "serverless deploy --verbose",
     "deploy-development": "serverless deploy --verbose --stage dev"

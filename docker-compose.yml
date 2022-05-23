@@ -7,7 +7,7 @@ services:
     networks:
       - developer
     command: -jar DynamoDBLocal.jar -inMemory -sharedDb
-  serverless:
+  e-commerce-app:
     build: .
     volumes:
       - "./:/app"
