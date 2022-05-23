@@ -4,7 +4,7 @@
   "description": "A customer's wish list application",
   "scripts": {
     "test": "IS_TEST=true mocha 'tests/**/*.js' --recursive",
-    "dev": "npm install; serverless offline start --stage local",
+    "dev": "serverless offline start --stage local",
     "deploy-main": "serverless deploy --verbose",
     "deploy-development": "serverless deploy --verbose --stage dev"
   },
@@ -19,10 +19,10 @@
   },
   "homepage": "https://github.com/AndreReliquias/wishlist-app#readme",
   "devDependencies": {
-    "aws-sdk": "^2.1065.0",
+    "aws-sdk": "^2.1140.0",
+    "aws-sdk-mock": "^5.7.0",
     "mocha": "^10.0.0",
     "serverless-dynamodb-local": "^0.2.40",
-    "serverless-offline": "^8.3.1",
-    "aws-sdk-mock": "^5.7.0"
+    "serverless-offline": "^8.8.0"
   }
 }

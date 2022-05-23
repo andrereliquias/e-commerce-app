@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  dynamo:
+    image: amazon/dynamodb-local:latest
+    ports:
+      - "8000:8000"
+    networks:
+      - developer
+    command: -jar DynamoDBLocal.jar -inMemory -sharedDb
+  serverless:
+    build: .
+    volumes:
+      - "./:/app"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - dynamo
+    networks:
+      - developer
+
+networks:
+  developer:
