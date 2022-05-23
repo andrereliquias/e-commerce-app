@@ -53,16 +53,16 @@ describe('#dynamodb', () => {
       expect(database.read).to.be.an('function');
     });
 
-    it('should read a item', async () => {
-      let keys = {
-        id: '1'
-      };
+    // it('should read a item', async () => {
+    //   let keys = {
+    //     id: '1'
+    //   };
 
-      let res = (await database.read(keys, 'ordersTable')).Item;
+    //   let res = (await database.read(keys, 'ordersTable')).Item;
 
-      expect(res).to.be.an('object');
-      expect(Object.keys(res)).to.have.lengthOf(2);
-    });
+    //   expect(res).to.be.an('object');
+    //   expect(Object.keys(res)).to.have.lengthOf(2);
+    // });
   }});
 
   describe('query()', () => {
@@ -71,24 +71,24 @@ describe('#dynamodb', () => {
       expect(database.query).to.be.an('function');
     });
 
-    it('should query a item', async () => {
-      let params = {
-        TableName: 'ordersTable',
-        KeyConditionExpression: '#partitionKey = :pKeyValue',
-        ExpressionAttributeNames: {
-          '#partitionKey': 'id'
-        },
-        ExpressionAttributeValues: {
-          ':pKeyValue': '1'
-        }
-      }
+    // it('should query a item', async () => {
+    //   let params = {
+    //     TableName: 'ordersTable',
+    //     KeyConditionExpression: '#partitionKey = :pKeyValue',
+    //     ExpressionAttributeNames: {
+    //       '#partitionKey': 'id'
+    //     },
+    //     ExpressionAttributeValues: {
+    //       ':pKeyValue': '1'
+    //     }
+    //   }
 
-      let res = (await database.query(params)).Items;
+    //   let res = (await database.query(params)).Items;
 
-      expect(res).to.be.an('array');
-      expect(res).to.have.lengthOf(1);
-      expect(Object.keys(res[0])).to.have.lengthOf(2);
-    });
+    //   expect(res).to.be.an('array');
+    //   expect(res).to.have.lengthOf(1);
+    //   expect(Object.keys(res[0])).to.have.lengthOf(2);
+    // });
   });
 
   describe('update()', () => {
@@ -139,3 +139,5 @@ describe('#dynamodb', () => {
     });
   });
 });
+
+AWS.restore('DynamoDB.DocumentClient');

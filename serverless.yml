@@ -43,9 +43,6 @@ package:
     - .github/**
 
 functions:
-  hello:
-    handler: handler.hello
-
   notFound:
     handler: src/shared/notFound.notFound
     timeout: 30
@@ -53,6 +50,15 @@ functions:
       - http:
           path: ${self:custom.version}/{proxy+}
           method: any
+          cors: true
+
+  createOrders:
+    handler: src/api/${self:custom.version}/orders/create.create
+    timeout: 30
+    events:
+      - http:
+          path: ${self:custom.version}/orders
+          method: post
           cors: true
 
 resources:
