@@ -21,7 +21,7 @@ describe('#create', () => {
 
       create.create(event, {}, (err, resp) => {
         expect(err).to.be.null;
-        expect(resp.statusCode).to.equal(200);
+        expect(resp.statusCode).to.equal(201);
       });
 
     });

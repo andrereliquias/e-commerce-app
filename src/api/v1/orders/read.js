@@ -11,7 +11,7 @@ module.exports.read = (event, context, callback) => {
   dynamoClient.search(params).then((success) => {
     response.json(callback, success.Items, 200);
   }).catch((erro) => {
-    responseErro.erro(callback, event.resource, erro.message);
+    responseErro.erro(callback, event.path, erro.message);
   });
 
 }
@@ -27,6 +27,6 @@ module.exports.readById = (event, context, callback) => {
     }
 
   }).catch((erro) => {
-    responseErro.erro(callback, event.resource, erro.message);
+    responseErro.erro(callback, event.path, erro.message);
   });
 }

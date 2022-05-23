@@ -79,6 +79,15 @@ functions:
           method: get
           cors: true
 
+  updateOrders:
+    handler: src/api/${self:custom.version}/orders/update.update
+    timeout: 30
+    events:
+      - http:
+          path: ${self:custom.version}/orders/{id}
+          method: put
+          cors: true
+
 resources:
  Resources:
     ordersTable:

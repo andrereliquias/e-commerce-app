@@ -138,7 +138,7 @@ describe('#dynamodb', () => {
       let res = (await database.update(params)).Attributes;
 
       expect(res).to.be.an('object');
-      expect(Object.keys(res)).to.have.lengthOf(2);
+      expect(Object.keys(res)).to.have.lengthOf.at.least(2);
       expect(res.item).to.equal('updated');
     });
   });

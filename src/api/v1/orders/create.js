@@ -15,7 +15,7 @@ module.exports.create = (event, context, callback) => {
   body = JSON.parse(event.body);
 
   if(!check.isValid(body, PARAMS_TO_CHECK)) {
-    responseErro.erro(callback, event.resource, "Request inválido!", 400);
+    responseErro.erro(callback, event.path, "Request inválido!", 400);
   }
 
   let item = {
@@ -30,7 +30,7 @@ module.exports.create = (event, context, callback) => {
   dynamoClient.insert(item, 'ordersTable').then((success) => {
     response.json(callback, item, 201);
   }).catch((erro) => {
-    responseErro.erro(callback, event.resource, erro.message);
+    responseErro.erro(callback, event.path, erro.message);
   });
 
 };
