@@ -1,7 +1,7 @@
 {
-  "name": "wishlist-app",
+  "name": "e-commerce-app",
   "version": "1.0.0",
-  "description": "A customer's wish list application",
+  "description": "A e-commerce application",
   "scripts": {
     "test": "IS_OFFLINE=true mocha 'tests/**/*.js' --recursive",
     "test-pipeline": "IS_TEST=true mocha 'tests/**/*.js' --recursive",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AndreReliquias/wishlist-app"
+    "url": "git+https://github.com/AndreReliquias/e-commerce-app"
   },
   "author": "André Reliquias",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AndreReliquias/wishlist-app/issues"
+    "url": "https://github.com/AndreReliquias/e-commerce-app/issues"
   },
-  "homepage": "https://github.com/AndreReliquias/wishlist-app#readme",
+  "homepage": "https://github.com/AndreReliquias/e-commerce-app#readme",
   "devDependencies": {
     "aws-sdk": "^2.1140.0",
     "aws-sdk-mock": "^5.7.0",
@@ -27,6 +27,9 @@
     "serverless-offline": "^8.8.0"
   },
   "dependencies": {
+    "google-libphonenumber": "^3.2.27",
+    "jsonwebtoken": "^8.5.1",
+    "twilio": "^3.77.1",
     "uuid": "^8.3.2"
   }
 }

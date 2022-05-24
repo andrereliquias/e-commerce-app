@@ -22,13 +22,17 @@ provider:
             - dynamodb:DeleteItem
           Resource: "arn:aws:dynamodb:*:*:table/*"
 
+  environment:
+    # Adicionar em um .env
+    ACCESS_TOKEN_SECRET: "64b4f06dd78f4607c35aa19c246db9f05e1ee40b5acf4d8503e1c642010fbff65e53086bb6c95d72fbcb0cd2906cb385095a0849964956c953d2b2d51eaf4c85"
+    TWILIO_ACCOUNT_SID: "ACd0a4bc51d9309c29f33bde6c7c196b1e"
+    TWILIO_AUTH_TOKEN: "b7542d24dbb0aa1b106e37885499fdd7"
+
 plugins:
   - serverless-dynamodb-local
   - serverless-offline
 
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
+
 
 package:
   excludeDevDependencies: true
@@ -41,6 +45,7 @@ functions:
   notFound:
     handler: src/shared/notFound.notFound
     timeout: 30
+    # authorizer: authorizerAccess
     events:
       - http:
           path: ${self:custom.version}/{proxy+}
@@ -50,6 +55,7 @@ functions:
   createOrders:
     handler: src/api/${self:custom.version}/orders/create.create
     timeout: 30
+    # authorizer: authorizerAccess
     events:
       - http:
           path: ${self:custom.version}/orders
@@ -59,6 +65,7 @@ functions:
   readOrders:
     handler: src/api/${self:custom.version}/orders/read.read
     timeout: 30
+    # authorizer: authorizerAccess
     events:
       - http:
           path: ${self:custom.version}/orders
@@ -68,6 +75,7 @@ functions:
   readOrdersById:
     handler: src/api/${self:custom.version}/orders/read.readById
     timeout: 30
+    # authorizer: authorizerAccess
     events:
       - http:
           path: ${self:custom.version}/orders/{id}
@@ -77,6 +85,7 @@ functions:
   updateOrders:
     handler: src/api/${self:custom.version}/orders/update.update
     timeout: 30
+    # authorizer: authorizerAccess
     events:
       - http:
           path: ${self:custom.version}/orders/{id}
@@ -86,11 +95,42 @@ functions:
   deleteOrders:
     handler: src/api/${self:custom.version}/orders/delete.delete
     timeout: 30
+    # authorizer: authorizerAccess
     events:
       - http:
           path: ${self:custom.version}/orders/{id}
           method: delete
           cors: true
+
+  createCredentials:
+    handler: src/api/${self:custom.version}/auth/create.create
+    timeout: 30
+    events:
+      - http:
+          path: ${self:custom.version}/credential
+          method: post
+          cors: true
+
+  firstLoginStep:
+    handler: src/api/${self:custom.version}/auth/firstLoginStep.firstLoginStep
+    timeout: 30
+    events:
+      - http:
+          path: ${self:custom.version}/credential/login
+          method: post
+          cors: true
+
+  secondLoginStep:
+    handler: src/api/${self:custom.version}/auth/secondLoginStep.secondLoginStep
+    timeout: 30
+    events:
+      - http:
+          path: ${self:custom.version}/credential/login/two-step
+          method: post
+          cors: true
+
+  # authorizerAccess:
+  #   handler: src/api/${self:custom.version}/auth/authorizerAccess.authorizerAccess
 
 resources:
  Resources:
@@ -104,6 +144,24 @@ resources:
         KeySchema:
           - AttributeName: id
             KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+    credentialsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: credentialsTable
+        AttributeDefinitions:
+          - AttributeName: partitionKey
+            AttributeType: S
+          - AttributeName: sortKey
+            AttributeType: S
+        KeySchema:
+          - AttributeName: partitionKey
+            KeyType: HASH
+          - AttributeName: sortKey
+            KeyType: RANGE
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1

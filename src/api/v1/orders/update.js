@@ -52,7 +52,6 @@ module.exports.update = (event, context, callback) => {
     }
 
   }).catch((erro) => {
-    console.log('Deu erro')
     responseErro.erro(callback, event.path, erro.message);
   });
 }

@@ -136,8 +136,8 @@
               }
             }
           },
-          "400": {
-            "description": "Input inválido",
+          "401": {
+            "description": "Usuário ou senha inválido",
             "content": {
 							"application/json": {
 								"schema": {
@@ -198,8 +198,8 @@
               }
             }
           },
-          "400": {
-            "description": "Input inválido",
+          "403": {
+            "description": "Segundo fator de autenticação inválido",
             "content": {
 							"application/json": {
 								"schema": {
