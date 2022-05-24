@@ -137,7 +137,7 @@ resources:
     ordersTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: ordersTable
+        TableName: ${self:provider.stage}OrdersTable
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
@@ -151,7 +151,7 @@ resources:
     credentialsTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: credentialsTable
+        TableName: ${self:provider.stage}CredentialsTable
         AttributeDefinitions:
           - AttributeName: partitionKey
             AttributeType: S
