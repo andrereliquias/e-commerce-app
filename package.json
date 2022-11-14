@@ -24,7 +24,7 @@
     "aws-sdk-mock": "^5.7.0",
     "mocha": "^10.0.0",
     "serverless-dynamodb-local": "^1.0.2",
-    "serverless-offline": "^8.8.0"
+    "serverless-offline": "^8.8.1"
   },
   "dependencies": {
     "google-libphonenumber": "^3.2.27",
