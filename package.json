@@ -23,7 +23,7 @@
     "aws-sdk": "^2.1140.0",
     "aws-sdk-mock": "^5.7.0",
     "mocha": "^10.0.0",
-    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-dynamodb-local": "^1.0.2",
     "serverless-offline": "^8.8.0"
   },
   "dependencies": {
