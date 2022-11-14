@@ -27,6 +27,7 @@
     "serverless-offline": "^8.8.1"
   },
   "dependencies": {
+    "chai": "^4.3.7",
     "google-libphonenumber": "^3.2.27",
     "jsonwebtoken": "^8.5.1",
     "twilio": "^3.77.1",
