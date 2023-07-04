@@ -24,9 +24,9 @@ provider:
 
   environment:
     # Adicionar em um .env
-    ACCESS_TOKEN_SECRET: "64b4f06dd78f4607c35aa19c246db9f05e1ee40b5acf4d8503e1c642010fbff65e53086bb6c95d72fbcb0cd2906cb385095a0849964956c953d2b2d51eaf4c85"
-    TWILIO_ACCOUNT_SID: "ACd0a4bc51d9309c29f33bde6c7c196b1e"
-    TWILIO_AUTH_TOKEN: "b7542d24dbb0aa1b106e37885499fdd7"
+    ACCESS_TOKEN_SECRET: "64b4f06dd78f4607c35aa19c246db9f05e1ee40b5acf4d8503e1c642010fbff65e53086bb6c95d72fbcb0cd2906cb385095a0849964956c953d2b2d51eaf4c85" # dummy token
+    TWILIO_ACCOUNT_SID: "ACd0a4bc51d9309c29f33bde6c7c196b1e" # dummy token
+    TWILIO_AUTH_TOKEN: "b7542d24dbb0aa1b106e37885499fdd7" # dummy token
 
 plugins:
   - serverless-dynamodb-local
